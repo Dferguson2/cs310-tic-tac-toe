@@ -89,24 +89,24 @@ public class TicTacToeModel {
            specified location is valid, make a mark for the current player, then
            toggle "xTurn" from true to false (or vice-versa) to switch to the
            other player before returning TRUE.  Otherwise, return FALSE. */
-        boolean test = false;
+        boolean success = false;
 		if(isValidSquare(row,col)){
             if(isSquareMarked(row,col)){
                 if(xTurn){
                     board[row][col] = Mark.X;
                     xTurn = false;
-                    test = true;
+                    success = true;
                 }
                 
                 else{
                     board[row][col] = Mark.O;
                     xTurn = true;
-                    test = true;
+                    success = true;
                 }
             }
         }
         
-        return test;   
+        return success;   
     }
 	
     private boolean isValidSquare(int row, int col) {
