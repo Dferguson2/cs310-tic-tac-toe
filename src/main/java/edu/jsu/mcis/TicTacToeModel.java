@@ -199,7 +199,7 @@ public class TicTacToeModel {
          for(int h = 0; h < width; h++){
              counter = 0;
              for(int z = 0; z < width; z++){
-                 if(getMark(h,z) == mark){
+                 if(getMark(z,h) == mark){
                      counter++;
                  }
                  if(counter == width){
