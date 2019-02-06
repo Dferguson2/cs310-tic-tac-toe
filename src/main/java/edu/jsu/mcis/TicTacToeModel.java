@@ -91,29 +91,31 @@ public class TicTacToeModel {
            other player before returning TRUE.  Otherwise, return FALSE. */
         boolean success = false;
 		if(isValidSquare(row,col)){
-            if(isSquareMarked(row,col)){
+            if(!isSquareMarked(row,col)){
                 if(xTurn){
                     board[row][col] = Mark.X;
-                    xTurn = false;
-                    success = true;
                 }
                 
                 else{
                     board[row][col] = Mark.O;
-                    xTurn = true;
-                    success = true;
                 }
+                xTurn = !xTurn;
+                success = true;
             }
+
+            return success;
         }
-        
-        return success;   
+
+        else{
+            return false;
+        }
     }
 	
     private boolean isValidSquare(int row, int col) {
         
         /* Return TRUE if the specified location is within the bounds of the board */
         
-        if(row <= width && row >= 0 && col <= width && row >= 0){
+        if(row < width && row >= 0 && col < width && col >= 0){
             return true;
         }
         
@@ -288,14 +290,22 @@ return true;
         StringBuilder output = new StringBuilder("  ");
         
         /* Output the board contents as a string (see examples) */
- 
+       // output.append("\n");
+        //output.append("  ");
+        for(int i = 0; i < width; ++i){
+            output.append(i);
+        }
+
         for(int i = 0; i < width; ++i){
             output.append("\n");
+            output.append(i + " ");
+
+            
             for(int n = 0; n < width; ++n){
                 output.append(board[i][n]);                
             }
         } 
-
+        output.append("\n");
         return output.toString();
         
     }
